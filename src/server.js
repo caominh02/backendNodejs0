@@ -1,6 +1,9 @@
-const express = require('express')
-const path = require('path');
 require('dotenv').config();
+const express = require('express'); // common js
+
+const configViewEngine = require('./config/viewEngine')
+const webRouters = require('./routes/web')
+const connection = require('./config/database')
 
 
 // IMPORT EXPRESS FROM 'EXPRESS'; // ES MODULE
@@ -8,26 +11,25 @@ const app = express() // APP EXPRESS
 const port = process.env.PORT || 8888; // PORT => HARDCODE
 const hostname = process.env.HOST_NAME;
 
-
-
 // config template engine
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
+configViewEngine(app);
+
+
+
+// simple query
+connection.query(
+  'SELECT * FROM Users u',
+  function(err, results, fields) {
+    console.log(">>> Results =", results);
+  }
+  
+);
 
 // khai bao route
 // moi route tuong tu nhu 1 page
-app.get('/', (req, res) => {
-  res.send('Hello World with Minh! test nodemon')
-})
-app.get('/viewPage', (req, res) => {
-  // res.send('Check View Page with Minh!')
-  res.render('sample.ejs')
-})
+app.use('/', webRouters);
+app.use('/ver1', webRouters);
 
-
-app.get('/testPage', (req, res) => {
-  res.send('<h1 style="color:red;">Test page and css by NodeJs with Minh </h1>')
-})
 
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`)
