@@ -11,6 +11,11 @@ const app = express() // APP EXPRESS
 const port = process.env.PORT || 8888; // PORT => HARDCODE
 const hostname = process.env.HOST_NAME;
 
+// config req.body
+app.use(express.json()) // for json
+app.use(express.urlencoded({ extended: true })) // for form data
+
+
 // config template engine
 configViewEngine(app);
 
