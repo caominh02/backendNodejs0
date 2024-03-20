@@ -1,0 +1,34 @@
+{
+  "name": "backendnodejs0",
+  "version": "1.0.0",
+  "description": "Hoi Dan IT full nodejs",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caominh02/backendNodejs0.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "author": "Cao Minh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caominh02/backendNodejs0/issues"
+  },
+  "homepage": "https://github.com/caominh02/backendNodejs0#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql2": "^3.9.2",
+    "save": "^2.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.0"
+  }
+}
