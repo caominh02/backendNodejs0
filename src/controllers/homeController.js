@@ -31,12 +31,23 @@ const postCreateUser = async (req, res) => {
 
     console.log(">>>> email = ", email, 'name = ', name, 'city = ', city)
 
+    // connection.query(
+    //     `INSERT INTO
+    //     Users (email, name, city)
+    //     VALUES (?, ?, ?)`,
+    //     [email, name, city],
+    //     function(err, results){
+    //         //console.log(results)
+    //         res.send('Create user succeed !')
+    //     }
+    // )
 
     let [results, fields] = await connection.query(
         `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city],
 
     )
     // console.log(">>> check results: ", results)
+    console.log(">>> check results: ", results)
     res.send('Create user succeed !')
 
 
