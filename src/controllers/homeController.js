@@ -36,7 +36,7 @@ const postCreateUser = async (req, res) => {
         `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city],
 
     )
-    console.log(">>> check results: ", results)
+    // console.log(">>> check results: ", results)
     res.send('Create user succeed !')
 
 
