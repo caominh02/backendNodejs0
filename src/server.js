@@ -22,13 +22,13 @@ configViewEngine(app);
 
 
 // simple query
-connection.query(
-  'SELECT * FROM Users u',
-  function(err, results, fields) {
-    console.log(">>> Results =", results);
-  }
+// connection.query(
+//   'SELECT * FROM Users u',
+//   function(err, results, fields) {
+//     console.log(">>> Results =", results);
+//   }
   
-);
+// );
 
 // khai bao route
 // moi route tuong tu nhu 1 page
