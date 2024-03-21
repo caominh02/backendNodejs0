@@ -13,6 +13,13 @@ const getHomePage = async (req, res) => {
 const getCreatePage = (req, res) => {
     res.render('create.ejs')
 }
+
+const getUpdatePage = (req, res) => {
+    const userID = req.params.id
+
+    res.render('edit.ejs')
+}
+
 const getTestPage = (req, res) => {
     res.send('<h1 style="color:red;">Test page and css by NodeJs with Minh </h1>')
 }
@@ -46,7 +53,6 @@ const postCreateUser = async (req, res) => {
         `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city],
 
     )
-    // console.log(">>> check results: ", results)
     console.log(">>> check results: ", results)
     res.send('Create user succeed !')
 
@@ -55,6 +61,6 @@ const postCreateUser = async (req, res) => {
 
 
 module.exports = {
-    getHomePage, getTestPage, getViewPage, getCreatePage,
+    getHomePage, getTestPage, getViewPage, getCreatePage, getUpdatePage,
     postCreateUser
 }
