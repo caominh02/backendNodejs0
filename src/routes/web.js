@@ -1,7 +1,7 @@
 // khai bao routes cua express
 const express = require('express');
 const router = express.Router();
-const { getHomePage, getTestPage, getViewPage, postCreateUser, getCreatePage, getUpdatePage } = require('../controllers/homeController')
+const { getHomePage, getTestPage, getViewPage, postCreateUser, getCreatePage, getUpdatePage, postUpdateUser } = require('../controllers/homeController')
 
 // router.get('/', (req, res) => {
 //     //xu ly data
@@ -19,4 +19,6 @@ router.get('/update/:id', getUpdatePage)
 
 
 router.post('/create-user', postCreateUser)
+router.post('/update-user', postUpdateUser)
+
 module.exports = router; //export default

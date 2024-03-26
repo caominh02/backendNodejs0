@@ -13,7 +13,15 @@ const getUserByID = async (userID) => {
 
     return user
 }
+
+const updateUserByID = async(email, name, city, userID) => {
+    let [results, fields] = await connection.query(
+        `UPDATE Users SET email = ?, name = ?, city = ?
+        Where id = ?`, [email, name, city, userID]
+    )
+}
 // 
 module.exports = {
-    getAllUsers, getUserByID
+    getAllUsers, getUserByID,
+    updateUserByID
 }

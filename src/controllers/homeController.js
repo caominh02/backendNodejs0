@@ -1,7 +1,5 @@
 const connection = require('../config/database');
-// const { get } = require('../routes/web');
-const {getAllUsers, getUserByID} = require('../services/CRUDService')
-// const { use } = require('../routes/web');
+const {getAllUsers, getUserByID, updateUserByID} = require('../services/CRUDService')
 
 const getHomePage = async (req, res) => {
     
@@ -32,14 +30,11 @@ const getViewPage = (req, res) => {
 
 const postCreateUser = async (req, res) => {
     // console.log(">>> req.body: ", req.body)
-
     let email = req.body.email
     let name = req.body.myName
     let city = req.body.city
     //let {email, name, city} = req.body
-
     console.log(">>>> email = ", email, 'name = ', name, 'city = ', city)
-
     // connection.query(
     //     `INSERT INTO
     //     Users (email, name, city)
@@ -50,7 +45,6 @@ const postCreateUser = async (req, res) => {
     //         res.send('Create user succeed !')
     //     }
     // )
-
     let [results, fields] = await connection.query(
         `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city],
 
@@ -58,11 +52,20 @@ const postCreateUser = async (req, res) => {
     console.log(">>> check results: ", results)
     res.send('Create user succeed !')
 
-
 }
 
-
+const postUpdateUser = async (req, res) => {
+    let email = req.body.email
+    let name = req.body.myName
+    let city = req.body.city
+    let userID = req.body.userID
+    console.log(">>>> email = ", email, 'name = ', name, 'city = ', city, 'UserId: ', userID)
+    await updateUserByID(email, name, city, userID)
+    //res.send('Update user succeed !')
+    res.redirect('/')
+}
 module.exports = {
     getHomePage, getTestPage, getViewPage, getCreatePage, getUpdatePage,
-    postCreateUser
+    postCreateUser, postUpdateUser,
+    
 }

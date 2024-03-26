@@ -74,4 +74,10 @@ table {
 }
 
 /* end create page */
+/* edit pgae */
+.d-none {
+  display: none;
+}
 
+
+/* end edit page */
