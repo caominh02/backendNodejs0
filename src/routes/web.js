@@ -7,12 +7,16 @@ const { getHomePage, getTestPage, getViewPage, postCreateUser, getCreatePage, ge
 //     //xu ly data
 //     res.send('Hello World with Minh! test nodemon')
 //   })
-
-router.get('/', getHomePage);
+// demo
 router.get('/testPage', getTestPage)
 router.get('/viewPage', getViewPage)
+// 
 
+router.get('/', getHomePage);
 router.get('/create', getCreatePage)
-router.get('/update/', getUpdatePage)
+router.get('/update/:id', getUpdatePage)
+
+
+
 router.post('/create-user', postCreateUser)
 module.exports = router; //export default
